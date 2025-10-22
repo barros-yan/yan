@@ -1,0 +1,226 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root{
+    --font1: "Poppins", serif;
+    --font2: "Roboto", serif;
+}
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: var(--font2);
+    transition: all .2s ease-in-out;
+}
+body {
+ width: 100%;
+ min-height: 100vh;
+}
+.container{
+    width: 100%;
+    min-height: 100vh;
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+h1{
+    color: rgb(254, 254, 254);
+    font-size: 40px;
+    padding: 25px;
+    margin-bottom: 10px;
+}
+.tema
+{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 10px;
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    outline: none;
+    border: none;
+    background: transparent;
+    color: rgb(0, 0, 0);
+    background: white;
+    cursor: pointer;
+}
+.tema:hover{
+    box-shadow: 0 0 20px grey;
+}
+
+.pesquisa{
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    gap: 20px;
+    padding: 30px 0;
+    margin-bottom: 10px;
+}
+.pesquisa input{
+    padding: 15px;
+    width: 90%;
+    max-width: 500px;
+    outline: none;
+    border: 1px solid grey;
+    border-radius: 10px;
+    font-size: 20px;
+}
+.pesquisa button{
+    padding: 20px;
+    width: 120px;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+.resultado{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+#result {
+  padding: 15px;
+  border: 1px solid #ffffff;
+  background-color: #f4f4f4;
+  max-height: 200px;
+  overflow-y: auto;
+  width: 90%;
+  max-width: 500px;
+  border-radius: 10px;
+  font-size: 21px;
+  display:  none;
+  flex-direction: column;
+  box-shadow: 0 0 5px rgb(255, 255, 255);
+}
+
+.title-result{
+    color: blue;
+    margin-bottom: 5px;
+}
+.erro{
+    display: none;
+    align-items: center;
+    width: 90%;
+    max-width: 400px;
+    padding: 10px;
+    background-color: rgba(179, 13, 13, 0.662);
+    border-radius: 10px;
+    color: rgb(233, 3, 3);
+    padding-left: 20px;
+    font-family: var(--font1);
+    position: relative;
+    gap: 20px;
+}
+.erro ion-icon{
+    font-size: 25px;
+}
+#close{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    padding: 5px 5px;
+    margin: 0;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-color: rgb(219, 16, 16);
+}
+#close:hover{
+    background-color: rgb(169, 25, 25);
+}
+.success{
+    border: 2px solid rgb(9, 29, 208);
+    box-shadow: 0 0 25px rgba(34, 65, 138, 0.608);
+}
+.buttons{
+    width: 100%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    gap: 20px;
+}
+.buttons button{
+    width: 150px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 10px;
+    background: rgb(2, 104, 2);
+    color: white;
+    font-weight: 700;
+    letter-spacing: .5px;
+}
+.buttons button ion-icon{
+    font-size: 24px;
+    color: rgb(40, 247, 40);
+    font-weight: 800;
+}
+.buttons .consulta{
+    background: rgb(5, 146, 12);
+    color: white;
+}
+.buttons .consulta ion-icon{
+    color: rgb(73, 248, 38);
+}
+.pesquisa .consulta:hover{
+    background-color: rgb(32, 249, 21);
+    color: rgb(5, 146, 28);
+}
+.pesquisa .consulta:hover ion-icon{
+    color: rgb(5, 146, 14);
+}
+.buttons .limpa{
+    background: rgb(146, 5, 5);
+    color: white;
+}
+.buttons .limpa ion-icon{
+    color: rgb(248, 38, 38);
+}
+.pesquisa .limpa:hover{
+    background-color: rgb(249, 21, 21);
+    color: rgb(146, 5, 5);
+}
+.pesquisa .limpa:hover ion-icon{
+    color: rgb(146, 5, 5);
+}
+
+
+#containerPrincipal.temaBranco{
+    background-color: #ffffff;
+}
+#titulo.temaBranco{
+    color: black;
+}
+#imei.temaBranco{
+    background: rgb(0, 0, 0);
+    color: white;
+}
+#trocaTema.temaBranco{
+    color: rgb(255, 255, 255);
+    background: rgb(0, 0, 0);
+}
+#trocaTema.temaBranco:hover{
+    box-shadow: 0 0 20px grey;
+}
+
+
+#result.temaBranco{
+    background: black;
+    color: white;
+}
+#result.temaBranco .title-result{
+    color: rgb(103, 103, 247);
+}
