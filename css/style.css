@@ -1,226 +1,314 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
+/* ===============================
+   Design tokens (cores & tipografia)
+   =============================== */
 :root{
-    --font1: "Poppins", serif;
-    --font2: "Roboto", serif;
-}
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: var(--font2);
-    transition: all .2s ease-in-out;
-}
-body {
- width: 100%;
- min-height: 100vh;
-}
-.container{
-    width: 100%;
-    min-height: 100vh;
-    background-color: rgb(0, 0, 0);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-h1{
-    color: rgb(254, 254, 254);
-    font-size: 40px;
-    padding: 25px;
-    margin-bottom: 10px;
-}
-.tema
-{
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    padding: 10px;
-    font-size: 25px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    outline: none;
-    border: none;
-    background: transparent;
-    color: rgb(0, 0, 0);
-    background: white;
-    cursor: pointer;
-}
-.tema:hover{
-    box-shadow: 0 0 20px grey;
+  --font1: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  --font2: "Roboto", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+
+  --bg: #0b0b0c;
+  --surface: #141417;
+  --surface-2: #1b1b20;
+  --card: #18181c;
+  --border: #2b2b32;
+  --muted: #9aa0a6;
+  --text: #f5f7fb;
+  --brand: #2ee06f;
+  --brand-2: #1ac759;
+  --danger: #ff4d4f;
+  --accent: #5b7cff;
+  --focus: rgba(94, 234, 212, .35);
+  --shadow: rgba(0, 0, 0, .35);
 }
 
-.pesquisa{
-    width: 90%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    height: 100%;
-    gap: 20px;
-    padding: 30px 0;
-    margin-bottom: 10px;
+/* Light tokens (ativados por .temaBranco nos principais elementos) */
+#containerPrincipal.temaBranco{
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --surface-2: #fafafa;
+  --card: #ffffff;
+  --border: #e5e7eb;
+  --muted: #6b7280;
+  --text: #0f172a;
+  --brand: #16a34a;
+  --brand-2: #0f9a3e;
+  --accent: #3b82f6;
+  --shadow: rgba(0,0,0,.08);
 }
-.pesquisa input{
-    padding: 15px;
-    width: 90%;
-    max-width: 500px;
-    outline: none;
-    border: 1px solid grey;
-    border-radius: 10px;
-    font-size: 20px;
+
+/* ===============================
+   Reset básico
+   =============================== */
+*{ box-sizing: border-box; }
+html,body{ height:100%; }
+body {
+  margin:0;
+  font-family: var(--font2);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
-.pesquisa button{
-    padding: 20px;
-    width: 120px;
-    border: none;
-    border-radius: 10px;
-    font-size: 15px;
-    cursor: pointer;
-    transition: all .2s ease-in-out;
+
+/* ===============================
+   Layout principal
+   =============================== */
+#containerPrincipal{
+  min-height: 100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap: 20px;
+  padding: 32px 16px 48px;
+  background: linear-gradient(180deg, var(--bg) 0%, var(--surface) 100%);
+  color: var(--text);
 }
+
+header{
+  width: 100%;
+  max-width: 760px;
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+}
+
+#titulo{
+  font-family: var(--font1);
+  font-weight: 700;
+  letter-spacing: .2px;
+  font-size: clamp(22px, 3vw, 32px);
+  color: var(--text);
+}
+
+/* Botão de tema */
+#trocaTema{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text);
+  cursor: pointer;
+  transition: transform .12s ease, box-shadow .2s ease, background .2s ease;
+  box-shadow: 0 6px 16px var(--shadow);
+}
+#trocaTema:hover{ transform: translateY(-2px); }
+#trocaTema:active{ transform: translateY(0); }
+#trocaTema.temaBranco{
+  background: var(--surface-2);
+  color: var(--text);
+}
+#trocaTema ion-icon{ font-size: 22px; }
+
+/* ===============================
+   Seções / grupos
+   =============================== */
+.group{
+  width:100%;
+  max-width: 760px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 10px 30px var(--shadow);
+}
+.group h2{
+  margin: 0 0 12px;
+  font-family: var(--font1);
+  font-weight: 600;
+  letter-spacing: .2px;
+}
+
+/* ===============================
+   Campos e botões
+   =============================== */
+label{
+  display:block;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+input[type="text"],
+input[type="search"],
+input[type="number"]{
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text);
+  outline: none;
+  font-size: 16px;
+  transition: border-color .15s ease, box-shadow .15s ease, background .2s ease;
+}
+input::placeholder{ color: var(--muted); }
+input:focus{
+  border-color: var(--accent);
+  box-shadow: 0 0 0 6px var(--focus);
+  background: var(--surface);
+}
+
+.row{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  background: var(--brand);
+  color: #07110a;
+  font-weight: 700;
+  letter-spacing: .3px;
+  cursor:pointer;
+  transition: transform .12s ease, box-shadow .2s ease, background .2s ease, opacity .2s ease;
+  box-shadow: 0 8px 18px var(--shadow);
+}
+button:hover{ transform: translateY(-1px); }
+button:active{ transform: translateY(0); }
+button.secondary{
+  background: transparent;
+  color: var(--text);
+  border-color: var(--border);
+}
+
+/* Botões específicos herdados do seu HTML (mantidos) */
+.buttons{
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+}
+.buttons .consulta{ background: var(--brand); }
+.buttons .limpa{
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+/* ===============================
+   Resultados / mensagens
+   =============================== */
 .resultado{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
-#result {
-  padding: 15px;
-  border: 1px solid #ffffff;
-  background-color: #f4f4f4;
-  max-height: 200px;
-  overflow-y: auto;
-  width: 90%;
-  max-width: 500px;
-  border-radius: 10px;
-  font-size: 21px;
-  display:  none;
-  flex-direction: column;
-  box-shadow: 0 0 5px rgb(255, 255, 255);
+
+.result{
+  display:none;
+}
+
+#result,
+#loginResult{
+  display:none; /* controlado via JS */
+  padding: 16px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  width: 100%;
+  max-width: 680px;
+  border-radius: 14px;
+  font-size: 16px;
+  line-height: 1.45;
+  color: var(--text);
+  box-shadow: 0 8px 22px var(--shadow);
+  white-space: normal;
+  word-break: break-word;
 }
 
 .title-result{
-    color: blue;
-    margin-bottom: 5px;
+  color: var(--accent);
+  font-weight: 700;
+  display: inline;
+  margin: 0 6px 0 0;
+  line-height: 1.3;
 }
-.erro{
-    display: none;
-    align-items: center;
-    width: 90%;
-    max-width: 400px;
-    padding: 10px;
-    background-color: rgba(179, 13, 13, 0.662);
-    border-radius: 10px;
-    color: rgb(233, 3, 3);
-    padding-left: 20px;
-    font-family: var(--font1);
-    position: relative;
-    gap: 20px;
+
+/* Estilo da resposta dos servidores */
+.server-answer{
+  font-weight: 800 !important;
+  color: var(--brand) !important;
 }
-.erro ion-icon{
-    font-size: 25px;
-}
-#close{
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    padding: 5px 5px;
-    margin: 0;
-    width: fit-content;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    background-color: rgb(219, 16, 16);
-}
-#close:hover{
-    background-color: rgb(169, 25, 25);
-}
+
 .success{
-    border: 2px solid rgb(9, 29, 208);
-    box-shadow: 0 0 25px rgba(34, 65, 138, 0.608);
-}
-.buttons{
-    width: 100%;
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    gap: 20px;
-}
-.buttons button{
-    width: 150px;
-    padding: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    gap: 10px;
-    background: rgb(2, 104, 2);
-    color: white;
-    font-weight: 700;
-    letter-spacing: .5px;
-}
-.buttons button ion-icon{
-    font-size: 24px;
-    color: rgb(40, 247, 40);
-    font-weight: 800;
-}
-.buttons .consulta{
-    background: rgb(5, 146, 12);
-    color: white;
-}
-.buttons .consulta ion-icon{
-    color: rgb(73, 248, 38);
-}
-.pesquisa .consulta:hover{
-    background-color: rgb(32, 249, 21);
-    color: rgb(5, 146, 28);
-}
-.pesquisa .consulta:hover ion-icon{
-    color: rgb(5, 146, 14);
-}
-.buttons .limpa{
-    background: rgb(146, 5, 5);
-    color: white;
-}
-.buttons .limpa ion-icon{
-    color: rgb(248, 38, 38);
-}
-.pesquisa .limpa:hover{
-    background-color: rgb(249, 21, 21);
-    color: rgb(146, 5, 5);
-}
-.pesquisa .limpa:hover ion-icon{
-    color: rgb(146, 5, 5);
+  border: 1px solid rgba(46, 224, 111, .45);
+  box-shadow: 0 0 0 6px rgba(46, 224, 111, .12), 0 8px 22px var(--shadow);
+  background: linear-gradient(180deg, rgba(46,224,111,.06), transparent 60%);
 }
 
+/* Erros unificados (#error, #loginError) */
+.erro, #error, #loginError{
+  display:none; /* controlado via JS */
+  align-items:center;
+  gap:10px;
+  width:100%;
+  max-width: 680px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: rgba(255,77,79,.08);
+  color: #ffb3b3;
+  border: 1px solid rgba(255,77,79,.35);
+  box-shadow: 0 6px 18px var(--shadow);
+  position: relative;
+}
+.erro ion-icon{ font-size:22px; }
+#close{
+  position:absolute;
+  top:8px;
+  right:8px;
+  padding:6px 8px;
+  border-radius:8px;
+  border: 1px solid rgba(255,77,79,.4);
+  background: rgba(255,77,79,.15);
+  color:#ffd1d1;
+  cursor:pointer;
+}
+#close:hover{ filter: brightness(1.05); }
 
-#containerPrincipal.temaBranco{
-    background-color: #ffffff;
-}
-#titulo.temaBranco{
-    color: black;
-}
-#imei.temaBranco{
-    background: rgb(0, 0, 0);
-    color: white;
+/* ===============================
+   Tema claro (compatível com .temaBranco nos elementos)
+   =============================== */
+#titulo.temaBranco{ color: var(--text); }
+#imei.temaBranco,
+#login.temaBranco{
+  background: var(--surface-2);
+  color: var(--text);
+  border-color: var(--border);
 }
 #trocaTema.temaBranco{
-    color: rgb(255, 255, 255);
-    background: rgb(0, 0, 0);
+  background: var(--surface-2);
+  color: var(--text);
 }
-#trocaTema.temaBranco:hover{
-    box-shadow: 0 0 20px grey;
+#result.temaBranco,
+#loginResult.temaBranco{
+  background: var(--surface-2);
+  color: var(--text);
+  border-color: var(--border);
+}
+#result.temaBranco .title-result,
+#loginResult.temaBranco .title-result{
+  color: var(--accent);
 }
 
-
-#result.temaBranco{
-    background: black;
-    color: white;
-}
-#result.temaBranco .title-result{
-    color: rgb(103, 103, 247);
+/* ===============================
+   Responsividade
+   =============================== */
+@media (max-width: 560px){
+  .row{ flex-direction: column; align-items: stretch; }
+  header{ gap: 12px; }
+  .group{ padding: 16px; }
 }

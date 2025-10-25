@@ -1,40 +1,49 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Consultar IMEI</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Consulta IMEI / Login</title>
+    <!-- Ionicons (opcional, porque você usa ícones) -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+
   </head>
   <body>
-    <div class="container" id="containerPrincipal">
-      <button id="trocaTema" class="tema"><ion-icon name="sunny-outline" id="iconeTema"></ion-icon></button>
-      <h1 id="titulo">Consulta IMEI</h1>
-      <div class="pesquisa">
-        <input type="text" id="imei" placeholder="Digite o número IMEI" />
-        <div class="buttons">
-          <button onclick="consultarIMEI()" class="consulta">
-            Consultar<span><ion-icon name="search-outline"></ion-icon></span>
-          </button>
-          <button class="limpa" onclick="window.location.reload();">
-            Limpar<span><ion-icon name="trash-outline"></ion-icon></span>
-          </button>
-        </div>
+    <main id="containerPrincipal">
+      <header class="row">
+        <h1 id="titulo" style="margin:0">Consultas SmartGPS</h1>
+        <button id="trocaTema" title="Alternar tema"><ion-icon id="iconeTema" name="sunny-outline"></ion-icon></button>
+      </header>
 
-        <div id="error" class="erro"></div>
-      </div>
-      <div class="resultado">
-        <div id="result"></div>
-      </div>
-    </div>
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
-    ></script>
-    <script
-      nomodule
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
-    ></script>
-    <script src="js/script.js"></script>
+      <!-- Consulta IMEI -->
+      <section class="group">
+        <h2 style="margin:10px 0 6px">Consulta IMEI</h2>
+        <label for="imei">IMEI</label>
+        <input id="imei" type="text" placeholder="Digite o IMEI" />
+        <div class="row">
+          <button id="btnImei">Consultar IMEI</button>
+          <div id="error" class="erro" style="display:none"></div>
+        </div>
+        <div id="result" class="result"></div>
+      </section>
+
+      <hr/>
+
+      <!-- Consulta Login -->
+      <section class="group">
+        <h2 style="margin:10px 0 6px">Consulta Login</h2>
+        <label for="login">Login</label>
+        <input id="login" type="text" placeholder="Digite o login" />
+        <div class="row">
+          <button id="btnLogin">Consultar Login</button>
+          <div id="loginError" class="erro" style="display:none"></div>
+        </div>
+        <div id="loginResult" class="result"></div>
+      </section>
+    </main>
+
+    <script src="js/script.js" defer></script>
   </body>
 </html>
